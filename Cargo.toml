@@ -1,0 +1,21 @@
+[package]
+name = "wwff-directory"
+version = "0.1.0"
+authors = [ "Ossi Herrala OH8HUB <oherrala@iki.fi>" ]
+description = "A parser for WWFF directory CSV file"
+edition = "2021"
+
+readme = "README.md"
+repository = "https://github.com/oherrala/wwff-directory"
+keywords = [ "parser" ]
+categories = [ "encoding" ]
+
+[dependencies]
+chrono = { version = "0.4", default_features = false, features = [ "serde" ] }
+csv = "1"
+serde = { version = "1", features = [ "derive" ] }
+tinystr = { version = "0.7", features = [ "serde" ] }
+tracing = "0.1"
+
+[dev-dependencies]
+tracing-subscriber = { version = "0.3", features = [ "fmt" ] }
