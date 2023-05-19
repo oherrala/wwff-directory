@@ -10,12 +10,23 @@ repository = "https://github.com/oherrala/wwff-directory"
 keywords = [ "parser" ]
 categories = [ "encoding" ]
 
+[features]
+default = []
+downloader = [ "dep:reqwest", "dep:tokio" ]
+
 [dependencies]
 chrono = { version = "0.4", default_features = false, features = [ "serde" ] }
 csv = "1"
 serde = { version = "1", features = [ "derive" ] }
 tinystr = { version = "0.7", features = [ "serde" ] }
 tracing = "0.1"
+thiserror = "1"
+
+# for downloader feature
+reqwest = { version = "0.11", optional = true, default-features = false, features = [ "brotli", "deflate", "gzip", "rustls-tls-native-roots" ] }
+tokio = { version = "1", optional = true, features = [] }
 
 [dev-dependencies]
+tokio = { version = "1", features = [ "full" ] }
 tracing-subscriber = { version = "0.3", features = [ "fmt" ] }
+wwff-directory = { path = ".", features = [ "downloader" ] }
